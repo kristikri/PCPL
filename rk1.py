@@ -71,6 +71,7 @@ def second_task(one_to_many):
 
 def third_task(many_to_many, end_ch):
     res_3 = [(driver_name, park_name) for driver_name, driver_id_transport, park_name in many_to_many if driver_name.split()[0].endswith(end_ch)]
+    res_3.sort(key=itemgetter(1))
     return res_3
 
 def main():
