@@ -1,0 +1,41 @@
+import math
+
+def is_float(string):
+    try:
+        float(string)
+        return True
+    except:
+        return False
+
+def get_coef(prompt):
+    coef_str = 'test'
+    while is_float(coef_str) == False:
+        coef_str = input(prompt)
+    coef = float(coef_str)
+    return coef
+
+def solving(a, b, c):
+    D = b**2 - 4*a*c
+
+    if D > 0:
+        x1 = (-b + math.sqrt(D)) / (2*a)
+        x2 = (-b - math.sqrt(D)) / (2*a)
+        return x1, x2
+    elif D == 0:
+        x = -b / (2*a)
+        return x
+    else:
+        return "No real roots"
+
+while(True):
+    a = get_coef("Введите коэффициент a: ")
+    b = get_coef("Введите коэффициент b: ")
+    c = get_coef("Введите коэффициент c: ")
+    res = solving(a, b, c)
+
+    print("Результаты:")
+    if isinstance(res, tuple):
+        print("x1 =", res[0])
+        print("x2 =", res[1])
+    else:
+        print(res)
